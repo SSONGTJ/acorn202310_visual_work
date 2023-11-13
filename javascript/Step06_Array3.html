@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step06_Array3.html</title>
+</head>
+<body>
+    <h1>배열의 다양한 함수 활용</h1>
+    <script>
+        const nums=[1, 5, 8, -10, -20, 10, 30];
+        /*
+            nums 배열에 저장된 아이템을 이용해서 
+            1. 음수는 제외하고
+            2. 양수의 제곱으로 구성된 배열을 얻어내 보세요. 
+        */
+        const result1=nums.filter((item) => item>0);
+        const result2=result1.map((item) => item*item);
+        //위의 2줄 code 를 한줄로 표현하면 아래와 같다
+        const result3=nums.filter((item)=>item>0).map((item)=>item**2);
+    </script>
+</body>
+</html>
