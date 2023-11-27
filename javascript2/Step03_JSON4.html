@@ -23,6 +23,31 @@
     <script>
         //원격지 서버로 부터 받아온 UI 에 출력할 정보를 가지고 있는 JSON 문서(문자열) 이라고 가정하자 
         const data=`{"num":1, "name":"김구라", "addr":"노량진"}`;
+
+        document.querySelector("#addBtn2").addEventListener("click", ()=>{
+            //json 문자열을 object 로 만든 다음 
+            const info=JSON.parse(data);
+            //object 에 있는 정보를 이용해서 원하는 형식의 문자열을 만든다음
+            let tr=`
+                <tr>
+                    <td>`+info.num+`</td>
+                    <td>`+info.name+`</td>
+                    <td>`+info.addr+`</td>
+                </tr>
+            `;
+            let tr2=`
+                <tr>
+                    <td>${info.num}</td>
+                    <td>${info.name}</td>
+                    <td>${info.addr}</td>
+                </tr>
+            `;
+            //tbody 에 html 로 해석 될수 있도록 끼워 놓는다.
+            document.querySelector("tbody").insertAdjacentHTML("beforeend", tr2);
+        });
+
+
+
         //추가 버튼을 눌렀을때 위의 data 를 이용해서 tbody 에 table row 를 하나 추가해 보세요
         document.querySelector("#addBtn").addEventListener("click", ()=>{
             const info=JSON.parse(data);
