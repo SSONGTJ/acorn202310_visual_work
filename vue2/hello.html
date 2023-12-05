@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello.html</title>
+</head>
+<body>
+    <div>
+        <p>오늘의 운세 : <strong id="result"></strong></p>
+        <button id="printBtn">출력하기</button>
+        <br>
+        <input type="text" id="inputMsg">
+        <p id="result2"></p>
+    </div>
+    <script>
+        let greet="hi";
+        document.querySelector("#result").innerText = greet;
+        document.querySelector("#printBtn").addEventListener("click", ()=>{
+            greet="동쪽으로 가면 귀인을 만나요!";
+        });
+        // #inputMsg 에 입력한 내용이 바로바로 #result2 에 출력되도록 해 보세요.
+        document.querySelector("#inputMsg").addEventListener("input", (e)=>{
+            //현재까지 입력한 값을 읽어와서 
+            let msg=e.target.value;
+            //innerText 에 출력하기 
+            document.querySelector("#result2").innerText = msg;
+        });
+    </script>
+    <div id="app">
+        <p>오늘의 운세 : <strong>{{fortune}}</strong></p>
+        <button v-on:click="clicked">출력하기</button>
+        <br>
+        <input type="text" v-model="msg">
+        <p>{{msg}}</p>
+    </div>
+    <!-- vue js 로딩 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //로딩된 vue js 를 활용해서 동작 정의하기
+        new Vue({
+            el:"#app",
+            data:{
+                fortune:"hi",  //fortune 이라는 모델의 초기값은 빈 문자열 
+                msg:""
+            },
+            methods:{
+                clicked:function(){
+                    //this.fortune 은 모델을 참조할때 사용한다 
+                    this.fortune="동쪽으로 가면 귀인을 만나요!";
+                }
+            }
+        });
+    </script>
+    <div>
+        내이름은 : <strong id="result3"></strong>
+    </div>
+    <script>
+        let myName="김구라";
+        document.querySelector("#result3").innerText=myName;
+    </script>
+</body>
+</html>
