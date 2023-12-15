@@ -1,17 +1,79 @@
-
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" },
-      { "id": 2, "title": "node js 입니다", "author": "김구라" },
-      { "id": 3, "title": "json server 테스트", "author": "해골" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" },
-    "cafes":[
-      {"id":1, "title":"안녕","writer":"kim", "content":"json 서버를 활용하자"},
-      {"id":2, "title":"hello","writer":"lee", "content":"json 서버를 활용하자2"},
-      {"id":3, "title":"bye","writer":"park", "content":"json 서버를 활용하자3"}
-    ]
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "node js 입니다",
+      "author": "김구라"
+    },
+    {
+      "id": 3,
+      "title": "json server 테스트",
+      "author": "해골"
+    },
+    {
+      "title": "제목",
+      "author": "원숭이",
+      "id": 4
+    },
+    {
+      "title": "제목임",
+      "author": "작성자임",
+      "id": 5
+    },
+    {
+      "title": "ㅌㅌㅌ",
+      "author": "ㅌㅌㅌ",
+      "id": 6
+    },
+    {
+      "title": "ㅊㅊㅊ",
+      "author": "ㅊㅊㅊ",
+      "id": 7
+    },
+    {
+      "title": "ㄴㄴㄴ",
+      "author": "ㄴㄴㄴ",
+      "id": 8
+    },
+    {
+      "title": "ㅌㅌㅌ",
+      "author": "ㅌㅌㅌ",
+      "id": 9
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "cafes": [
+    {
+      "id": 1,
+      "title": "안녕",
+      "writer": "kim",
+      "content": "json 서버를 활용하자"
+    },
+    {
+      "id": 2,
+      "title": "hello",
+      "writer": "lee",
+      "content": "json 서버를 활용하자2"
+    },
+    {
+      "id": 3,
+      "title": "bye",
+      "writer": "park",
+      "content": "json 서버를 활용하자3"
+    }
+  ]
 }

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step08_fetch2.html</title>
+</head>
+<body>
+    <div class="container" id="app">
+        <h1>ajax 요청을 통해서 받아온 데이터 사용하기</h1>
+	    <p> 페이지 전환없이 서버에 요청하는것을 ajax 라고 생각하면 된다.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>글번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in posts">
+                    <td>{{item.id}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.author}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <form action="http://localhost:3000/posts" method="post" @submit.prevent="onSubmit">
+            <input type="text" name="title" placeholder="제목...">
+            <input type="text" name="author" placeholder="작성자...">
+            <button type="submit">저장</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            mounted(){
+                //Vue 가 동작할 준비가 되면 호출되는 함수 
+                console.log("mounted!");
+                this.getList();
+            },
+            data:{
+                posts:[]
+            },
+            methods:{
+                getList(){
+                    //서버에 글 목록을 fetch() 함수를 이용해서 요청 
+                    fetch("http://localhost:3000/posts")
+                    .then(res=>res.json())
+                    .then(data=>{
+                        //data 는 글 정보가 들어 있는  [{},{},{},...] 이런형식의 배열이다. 
+                        console.log(data);
+                        //data 를 모델에 덮어쓰기하면 UI 가 자동 update 된다.
+                        this.posts=data;
+                    });
+                },
+                onSubmit(e){
+                    //이벤트가 발생한 폼의 참조값은 e.target 이다
+                    //요청 url 
+                    const url=e.target.action;
+                    //요청 방식
+                    const method=e.target.method;
+                    //전송할 폼 데이터
+                    const formData=new FormData(e.target);
+                    //폼에 입력한 데이터를 이용해서 query string 만들어 내기 
+                    const queryString=new URLSearchParams(formData).toString();
+
+                    //폼에 입력한 내용을 직접 전송한다.
+                    fetch(url,{
+                        method:method,
+                        headers:{"Content-Type":"application/x-www-form-urlencoded; charset=utf-8"},
+                        body:queryString
+                    })
+                    .then(res=>res.json())
+                    .then(data=>{
+                        console.log("응답된 data");
+                        console.log(data);
+                        //글 목록 다시 받아오기 
+                        this.getList();
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
